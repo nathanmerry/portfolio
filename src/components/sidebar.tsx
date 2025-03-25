@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { cn } from "../utils"; // Assuming a utility for conditional class names
-// @ts-ignore
-import ProjectsLogo from "../assets/projects.svg?react";
+import {
+  ProjectsLogo,
+  StorySvg,
+  GithubLogo,
+  LinkedinLogo,
+  EmailLogo,
+} from "../svg";
 import { Link } from "react-router-dom";
 
 const Sidebar: React.FC = () => {
@@ -14,80 +19,28 @@ const Sidebar: React.FC = () => {
       icon: <ProjectsLogo />,
     },
     {
-      name: "Web apps",
-      href: "https://apps.abassdev.com",
-      icon: (
-        <svg
-          stroke="currentColor"
-          fill="currentColor"
-          strokeWidth="0"
-          viewBox="0 0 16 16"
-          height="20"
-          width="20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M10.478 1.647a.5.5 0 1 0-.956-.294l-4 13a.5.5 0 0 0 .956.294l4-13zM4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0zm6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0z"></path>
-        </svg>
-      ),
-      target: "_blank",
-      rel: "noopener noreferrer",
-    },
-    {
       name: "My Story",
       href: "/my-story/",
-      icon: (
-        <svg
-          stroke="currentColor"
-          fill="currentColor"
-          strokeWidth="0"
-          viewBox="0 0 16 16"
-          height="20"
-          width="20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M5.5 5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5Zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3Z"></path>
-          <path d="M8 2a2 2 0 0 0 2-2h2.5A1.5 1.5 0 0 1 14 1.5v13a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 14.5v-13A1.5 1.5 0 0 1 3.5 0H6a2 2 0 0 0 2 2Zm0 1a3.001 3.001 0 0 1-2.83-2H3.5a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-13a.5.5 0 0 0-.5-.5h-1.67A3.001 3.001 0 0 1 8 3Z"></path>
-        </svg>
-      ),
+      icon: <StorySvg />,
     },
     {
-      name: "Blog",
-      href: "https://abassdev.com/blog",
-      icon: (
-        <svg
-          stroke="currentColor"
-          fill="currentColor"
-          strokeWidth="0"
-          viewBox="0 0 16 16"
-          height="20"
-          width="20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0ZM3.668 2.501l-.288.646a.847.847 0 0 0 1.479.815l.245-.368a.809.809 0 0 1 1.034-.275.809.809 0 0 0 .724 0l.261-.13a1 1 0 0 1 .775-.05l.984.34c.078.028.16.044.243.054.784.093.855.377.694.801-.155.41-.616.617-1.035.487l-.01-.003C8.274 4.663 7.748 4.5 6 4.5 4.8 4.5 3.5 5.62 3.5 7c0 1.96.826 2.166 1.696 2.382.46.115.935.233 1.304.618.449.467.393 1.181.339 1.877C6.755 12.96 6.674 14 8.5 14c1.75 0 3-3.5 3-4.5 0-.262.208-.468.444-.7.396-.392.87-.86.556-1.8-.097-.291-.396-.568-.641-.756-.174-.133-.207-.396-.052-.551a.333.333 0 0 1 .42-.042l1.085.724c.11.072.255.058.348-.035.15-.15.415-.083.489.117.16.43.445 1.05.849 1.357L15 8A7 7 0 1 1 3.668 2.501Z"></path>
-        </svg>
-      ),
+      name: "GitHub",
+      href: "https://github.com/nathanmerry",
+      icon: <GithubLogo className="w-[23px] h-[23px]" />,
       target: "_blank",
       rel: "noopener noreferrer",
-      extraClasses: "mt-5",
     },
     {
-      name: "Contact Me",
-      href: "/contact/",
-      icon: (
-        <svg
-          stroke="currentColor"
-          fill="none"
-          strokeWidth="2"
-          viewBox="0 0 24 24"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          height="20"
-          width="20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-        </svg>
-      ),
+      name: "LinkedIn",
+      href: "https://www.linkedin.com/in/nathan-merry-289b6b16a/",
+      icon: <LinkedinLogo className="w-[23px] h-[23px]" />,
+      target: "_blank",
+      rel: "noopener noreferrer",
+    },
+    {
+      name: "Contact",
+      href: "mailto:nathanmerry9713@gmail.com",
+      icon: <EmailLogo className="w-[23px] h-[23px]" />,
     },
   ];
 

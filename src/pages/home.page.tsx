@@ -1,12 +1,13 @@
 import "../App.css";
-import displayPicture from "../assets/dp.png";
-// @ts-ignore
-import GithubLogo from "../assets/github.svg?react";
-// @ts-ignore
-import EmailLogo from "../assets/email.svg?react";
-// @ts-ignore
-import LinkedinLogo from "../assets/linkedin.svg?react";
+import {
+  displayPicture,
+  GithubLogo,
+  EmailLogo,
+  LinkedinLogo,
+  ArrowRight,
+} from "../svg";
 import Layout from "../layout";
+import { Link } from "react-router-dom";
 
 function HomePage() {
   return (
@@ -52,12 +53,20 @@ function HomePage() {
                   </span>
                 </h1>
                 <div className="text-2xl text-gray-500">
-                  I am a results-driven full-stack developer with expertise in
-                  web development, API integrations, and data automation.
-                  Passionate about optimizing workflows and reducing costs, I
-                  enjoy building efficient solutions that enhance productivity.
-                  In my free time, I work on personal projects and explore new
-                  technologies to stay ahead in the industry.
+                  <p className="mb-1">
+                    I'm a full-stack developer who helps startups launch and
+                    maintain websites that just work - fast, clean, and easy to
+                    manage. I specialise in WordPress theme/plugin
+                    customisation, CMS setup, and lightweight custom tools that
+                    keep your business running smoothly.{" "}
+                  </p>{" "}
+                  <p>
+                    Whether you're setting up your first site or scaling fast, I
+                    bring five years of experience building reliable, efficient
+                    solutions that save time and reduce overhead. I love working
+                    closely with teams to solve real problems - not just write
+                    code.
+                  </p>
                 </div>
                 <div className="text-xl flex text-[#71717a] items-center gap-2 justify-center md:justify-start text-muted-foreground">
                   <span className="inline-block w-2 h-2 bg-blue-600 rounded-full animate-pulse"></span>
@@ -91,24 +100,17 @@ function HomePage() {
                     <div className="insert-0 absolute size-full rounded-2xl px-4 py-1.5 text-sm font-medium shadow-[inset_0_-8px_10px_#ffffff1f] transform-gpu transition-all duration-300 ease-in-out group-hover:shadow-[inset_0_-6px_10px_#ffffff3f] group-active:shadow-[inset_0_-10px_10px_#ffffff3f]"></div>
                     <div className="absolute -z-20 [background:var(--bg)] [border-radius:var(--radius)] [inset:var(--cut)]"></div>
                   </button>
-                  <a
+                  <Link
+                    to={"/my-story"} // use 'to' instead of 'href' for internal routes
+                    style={{
+                      transitionProperty: "background-color, color",
+                      transitionDuration: "200ms, 50ms", // bg color 300ms, text color 100ms
+                      transitionTimingFunction: "ease-in-out",
+                    }}
                     className="text-black whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [_svg]:pointer-events-none [_svg]:size-4 [_svg]:shrink-0 border border-input shadow-sm hover:text-accent-foreground h-9 px-4 py-2 group relative overflow-hidden min-w-[100px] bg-background/80 hover:bg-background flex items-center justify-center gap-2"
-                    href="/my-story/"
                   >
-                    More About Me
-                    <svg
-                      stroke="currentColor"
-                      fill="currentColor"
-                      strokeWidth="0"
-                      viewBox="0 0 448 512"
-                      className="transition-transform group-hover:translate-x-1"
-                      height="1em"
-                      width="1em"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"></path>
-                    </svg>
-                  </a>
+                    More About Me <ArrowRight />
+                  </Link>
                 </div>
               </div>
             </div>
