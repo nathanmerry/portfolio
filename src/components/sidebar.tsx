@@ -133,7 +133,6 @@ const Sidebar: React.FC = () => {
                 : {})} // handle external links if needed
               className={cn(
                 "group flex items-center text-sm gap-3.5 font-medium p-2 lg:p-0 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
-                item.extraClasses || "",
                 sidebarOpen
                   ? "hover:bg-gray-800 hover:text-gray-100 transition-all duration-200"
                   : ""
