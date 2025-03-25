@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
-import "../App.css";
+import React, { useEffect, useState } from "react";
+import { cn } from "../utils"; // Assuming a utility for conditional class names
 // @ts-ignore
 import ProjectsLogo from "../assets/projects.svg?react";
+import { Link } from "react-router-dom";
 
-function Sidebar() {
-  const [sidebarOpen, setSidebarOpen] = useState<Boolean>(false);
+const Sidebar: React.FC = () => {
+  const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
 
   const menuItems = [
     {
@@ -67,7 +68,7 @@ function Sidebar() {
       ),
       target: "_blank",
       rel: "noopener noreferrer",
-      extraClasses: "mt-5", // we can store any special classes here
+      extraClasses: "mt-5",
     },
     {
       name: "Contact Me",
@@ -93,8 +94,8 @@ function Sidebar() {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "b") {
-        event.preventDefault(); // Prevents the default browser behavior
-        setSidebarOpen((prev) => !prev); // Toggle sidebar state
+        event.preventDefault();
+        setSidebarOpen((prev) => !prev);
         console.log("Sidebar toggled!");
       }
     };
@@ -113,18 +114,20 @@ function Sidebar() {
       aria-label="Main navigation"
     >
       <div
-        className={`${
+        className={cn(
+          "fixed inset-0 px-4 transition-[width] duration-300 bg-transparent bg-opacity-50 backdrop-blur",
           sidebarOpen ? "w-72" : "w-12"
-        } bg-transparent fixed inset-0 px-4 transition-[width] bg-opacity-50 duration-300  backdrop-blur`}
+        )}
       >
         <div className="flex items-center justify-between min-w-full py-3">
           <div className="relative flex items-center flex-1 w-full h-full my-auto">
             <a
-              className={`${
+              className={cn(
+                "absolute flex items-center gap-2",
                 sidebarOpen
-                  ? "optacity-100 visible duration-200 delay-200"
+                  ? "opacity-100 visible duration-200 delay-200"
                   : "opacity-0 invisible"
-              } absolute flex items-center gap-2`}
+              )}
               href="/"
             >
               <div className="px-2 font-black text-transparent bg-gradient-to-r font-orbitron font-edu-nsw from-black to-violet-500 bg-clip-text">
@@ -134,9 +137,9 @@ function Sidebar() {
           </div>
           <div className="flex-1"></div>
           <button
-            className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [_svg]:pointer-events-none [_svg]:size-4 [_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground rounded-md p-3 h-9 w-9"
-            aria-label="Close menu"
-            aria-expanded="true"
+            className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground rounded-md p-3 h-9 w-9"
+            aria-label="Toggle menu"
+            aria-expanded={sidebarOpen}
             onClick={() => setSidebarOpen(!sidebarOpen)}
           >
             <svg
@@ -159,38 +162,57 @@ function Sidebar() {
         </div>
         <div className="relative flex flex-col gap-2 mt-4">
           {menuItems.map((item, index) => (
-            <a
+            <Link
               key={item.name}
-              href={item.href}
-              target={item.target} // will be undefined if not present
-              rel={item.rel} // will be undefined if not present
-              className={`group flex items-center text-sm gap-3.5 font-medium p-2 hover:text-gray-100 hover:bg-gray-800 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 transition-colors duration-200 ${
-                item.extraClasses || ""
-              }`}
+              to={item.href} // use 'to' instead of 'href' for internal routes
+              style={{
+                transitionProperty: "background-color, color",
+                transitionDuration: "200ms, 50ms", // bg color 300ms, text color 100ms
+                transitionTimingFunction: "ease-in-out",
+              }}
+              {...(item.href
+                ? {
+                    component: "a",
+                    href: item.href,
+                    target: item.target,
+                    rel: item.rel,
+                  }
+                : {})} // handle external links if needed
+              className={cn(
+                "group flex items-center text-sm gap-3.5 font-medium p-2 lg:p-0 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
+                item.extraClasses || "",
+                sidebarOpen
+                  ? "hover:bg-gray-800 hover:text-gray-100 transition-all duration-200"
+                  : ""
+              )}
             >
-              <div aria-hidden="true">
-                {
-                  item.icon /* Renders whatever icon component or SVG you stored */
-                }
+              <div
+                aria-hidden="true"
+                className={cn(
+                  "duration-200 rounded p-2",
+                  sidebarOpen ? "" : "hover:bg-gray-800 hover:text-gray-100"
+                )}
+              >
+                {item.icon}
               </div>
               <span
-                className={`${
+                className={cn(
+                  "whitespace-pre transition-transform overflow-hidden duration-200",
                   !sidebarOpen && "translate-x-28"
-                } whitespace-pre transition-transform overflow-hidden duration-200`}
+                )}
                 style={{ transitionDelay: `${70 + index * 10}ms` }}
               >
                 {item.name}
               </span>
 
-              {/* Tooltip-like hover text (hidden by default) */}
               <span className="absolute hidden w-0 px-0 py-0 overflow-hidden font-semibold text-gray-900 whitespace-pre bg-white rounded-md left-48 drop-shadow-lg group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit">
                 {item.name}
               </span>
-            </a>
+            </Link>
           ))}
           <div className="mt-5">
             <button
-              className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-9 w-9"
+              className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-9 w-9"
               aria-label="Switch to dark mode"
             >
               <svg
@@ -229,6 +251,6 @@ function Sidebar() {
       </div>
     </nav>
   );
-}
+};
 
 export default Sidebar;
