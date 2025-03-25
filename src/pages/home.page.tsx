@@ -1,24 +1,27 @@
 import "../App.css";
 import displayPicture from "../assets/dp.png";
+// @ts-ignore
 import GithubLogo from "../assets/github.svg?react";
+// @ts-ignore
 import EmailLogo from "../assets/email.svg?react";
+// @ts-ignore
 import LinkedinLogo from "../assets/linkedin.svg?react";
 import Layout from "../layout";
 
 function HomePage() {
   return (
     <Layout>
-      <div className="relative justify-center h-screen flex flex-1 items-center">
+      <div className="relative flex items-center justify-center flex-1 h-screen">
         <div className="">
           <div className="absolute inset-0 overflow-hidden">
             <div className="absolute -inset-[10px] opacity-50">
-              <div className="absolute w-96 h-96 rounded-full mix-blend-multiply dark:mix-blend-overlay filter blur-xl animate-blob top-1/4 left-1/4 bg-primary/20"></div>
+              <div className="absolute rounded-full w-96 h-96 mix-blend-multiply dark:mix-blend-overlay filter blur-xl animate-blob top-1/4 left-1/4 bg-primary/20"></div>
               <div className="absolute w-96 h-96 rounded-full mix-blend-multiply dark:mix-blend-overlay filter blur-xl animate-blob top-1/3 right-1/4 bg-violet-500/20 delay-[2000ms]"></div>
               <div className="absolute w-96 h-96 rounded-full mix-blend-multiply dark:mix-blend-overlay filter blur-xl animate-blob bottom-1/4 left-1/3 bg-blue-500/20 delay-[4000ms]"></div>
             </div>
           </div>
           <div className="max-w-6xl mx-auto">
-            <div className="backdrop-blur-sm overflow-hidden bg-background/50 dark:bg-background/20 rounded-2xl border-border shadow-2xl flex w-full border">
+            <div className="flex w-full overflow-hidden border shadow-2xl backdrop-blur-sm bg-background/50 dark:bg-background/20 rounded-2xl border-border">
               <div className="w-[20%]">
                 <img src={displayPicture} alt="" className="" />
 
@@ -39,12 +42,12 @@ function HomePage() {
                   </div>
                 </div>
               </div>
-              <div className="space-y-8 px-10 py-10 flex-1 text-center md:text-left">
-                <div className="font-noto-sans-hatran-regular text-3xl">
+              <div className="flex-1 px-10 py-10 space-y-8 text-center md:text-left">
+                <div className="text-3xl font-noto-sans-hatran-regular">
                   Hello World, I am
                 </div>
-                <h1 className="font-orbitron font-edu-nsw text-6xl font-black">
-                  <span className="bg-gradient-to-r from-black to-violet-500 bg-clip-text text-transparent">
+                <h1 className="text-6xl font-black font-orbitron font-edu-nsw">
+                  <span className="text-transparent bg-gradient-to-r from-black to-violet-500 bg-clip-text">
                     Nathan Merry
                   </span>
                 </h1>
@@ -57,12 +60,13 @@ function HomePage() {
                   technologies to stay ahead in the industry.
                 </div>
                 <div className="text-xl flex text-[#71717a] items-center gap-2 justify-center md:justify-start text-muted-foreground">
-                  <span className="inline-block  w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
+                  <span className="inline-block w-2 h-2 bg-blue-600 rounded-full animate-pulse"></span>
                   Available for new projects
                 </div>
                 <div className="flex items-center gap-x-5">
                   <button
                     style={{
+                      // @ts-ignore
                       "--spread": "90deg",
                       "--shimmer-color": "#ffffff",
                       "--radius": "100px",
@@ -97,7 +101,7 @@ function HomePage() {
                       fill="currentColor"
                       strokeWidth="0"
                       viewBox="0 0 448 512"
-                      className="group-hover:translate-x-1 transition-transform"
+                      className="transition-transform group-hover:translate-x-1"
                       height="1em"
                       width="1em"
                       xmlns="http://www.w3.org/2000/svg"

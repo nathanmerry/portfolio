@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "../App.css";
+// @ts-ignore
 import ProjectsLogo from "../assets/projects.svg?react";
 
 function Sidebar() {
