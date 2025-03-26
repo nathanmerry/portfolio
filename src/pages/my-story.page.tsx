@@ -8,8 +8,8 @@ import Layout from "../layout";
 function MyStoryPage() {
   return (
     <Layout>
-      <div className="container mx-auto">
-        <div className="prose max-w-none">
+      <div className="container pt-10 mx-auto">
+        <div className="max-w-5xl prose">
           <h1>Hey, I'm Nathan!</h1>
           <p>
             I'm a self-taught developer who got started by diving into online
@@ -124,6 +124,12 @@ function MyStoryPage() {
           </p>
         </div>
       </div>
+      
+      <footer className="h-[100px] mt-10 flex bg-[#010101] relative items-center justify-center">
+        <div className="px-2 font-black text-transparent bg-gradient-to-r font-orbitron font-edu-nsw from-white to-violet-500 bg-clip-text">
+          NM Dev
+        </div>
+      </footer>
     </Layout>
   );
 }
