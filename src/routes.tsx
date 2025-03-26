@@ -5,7 +5,7 @@ import MyStory from "./pages/my-story.page";
 
 function AppRouter() {
   return (
-    <Router basename="/portfolio">
+    <Router basename={import.meta.env.BASE_URL}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/projects" element={<Projects />} />
