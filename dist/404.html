@@ -1,19 +1,8 @@
+<!-- public/404.html -->
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8" />
-    <script>
-      // Extract the current path
-      var path = window.location.pathname;
-      var query = window.location.search;
-      var hash = window.location.hash;
-
-      // Strip out /portfolio to get the actual route
-      var newUrl = "/portfolio" + path.replace("/portfolio", "") + query + hash;
-
-      // Redirect to index.html with correct route in hash
-      window.location.replace("/portfolio/index.html#!" + newUrl.replace("/portfolio", ""));
-    </script>
+    <meta http-equiv="refresh" content="0; URL=/" />
   </head>
   <body></body>
 </html>
