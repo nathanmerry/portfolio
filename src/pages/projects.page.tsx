@@ -4,7 +4,6 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -83,7 +82,11 @@ const projects = [
   },
 ];
 
-export function PersonalProjects({ project: selectedProject }) {
+export function PersonalProjects({
+  project: selectedProject,
+}: {
+  project: string;
+}) {
   const matchedProject = projects.find(
     (project) => project.id === selectedProject
   );
